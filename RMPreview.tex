@@ -20,7 +20,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage{tablefootnote}
-
+\usepackage{ulem}
  	
 \colorlet{mycitecolor}{Turquoise}
 \colorlet{mylinkcolor}{Turquoise}
@@ -54,6 +54,7 @@
 \newcommand{\tocheck}[1]{\textcolor{green}{Check: #1}}
 \newcommand{\citeme}{{\color{magenta} CITE ME!}}
 \newcommand{\ajf}[1]{\textcolor{red}{AtoI: #1}}
+\newcommand{\ilya}[1]{\textcolor{magenta}{#1}}
 
 \def\be{\begin{equation}}
 \def\ee{\end{equation}}
@@ -80,7 +81,7 @@
 
 \begin{abstract}
 
-LIGO and Virgo detectors has recently directly observed gravitational waves from several pairs of merging stellar-mass black holes, as well as from one neutron star binary.  These observations raise the hope that compact object mergers could be used as a probe of stellar and binary evolution, and perhaps of stellar dynamics.    This informal note summarises the existing observations, describes theoretical predictions for formation channels of merging stellar-mass black-hole binaries along with their rates and observable properties, and presents some of the prospects of gravitational-wave astronomy.
+LIGO and Virgo detectors \ilya{have} recently directly observed gravitational waves from \ilya{the mergers of} several pairs of  stellar-mass black holes, as well as from one \ilya{merging} neutron star binary.  These observations raise the hope that compact object mergers could be used as a probe of stellar and binary evolution, and perhaps of stellar dynamics.    This informal note summarises the existing observations, describes theoretical predictions for formation channels of merging stellar-mass black-hole binaries along with their rates and observable properties, and presents some of the prospects \ilya{for} gravitational-wave astronomy.
 
 \end{abstract}
 
@@ -88,11 +89,13 @@ LIGO and Virgo detectors has recently directly observed gravitational waves from
 
 \section{Introduction}
 
-The subject of merging stellar-mass binaries as gravitational-wave sources is perfectly suited to an informal colloquium presentation. Several formal reviews were written in the excitement following the first detection \citep{GW150914} of gravitational waves by the Laser Interferometer Gravitational-wave Observatory (LIGO) \citep{GW150914:detectors}, including the astrophysical context companion paper by the the LIGO-Virgo scientific collaboration \citep{GW150914:astro} and the excellent article by \citet{Miller:2016}. More reviews are certainly in the works. However, it is somewhat premature to formally review a field that is both rapidly evolving and very much in its infancy.  With just a few detections to date of gravitational waves from merging black holes \citep{GW150914,GW151226,BBH:O1,GW170104,GW170608,GW170814}, and one from merging neutron stars \citep{GW170817}, we are only beginning to explore the population of merging compact-object binaries.  We are not yet certain of the dominant formation channels for these sources, or even of the full range of astrophysical questions that gravitational-wave observations will answer. It is clear, however, that there are many important and exciting questions to explore.
+The subject of merging stellar-mass \ilya{black-hole} binaries as gravitational-wave sources is \sout{perfectly suited to an} \ilya{suitable for an}  informal colloquium\ilya{--style article} \sout{presentation}. Several formal reviews were written in the excitement following the first detection \citep{GW150914} of gravitational waves by the Laser Interferometer Gravitational-wave Observatory (LIGO) \citep{GW150914:detectors}, including the astrophysical context companion paper by the the LIGO-Virgo scientific collaboration \citep{GW150914:astro} and the excellent article by \citet{Miller:2016}. More reviews are certainly in the works. However, it is somewhat premature to formally review a field that is both rapidly evolving and very much in its infancy.  With just a few detections to date of gravitational waves from merging black holes \citep{GW150914,GW151226,BBH:O1,GW170104,GW170608,GW170814}, and one from merging neutron stars \citep{GW170817}, we are only beginning to explore the population of merging compact-object binaries.  We are not yet certain of the dominant formation channels for these sources, or even of the full range of astrophysical questions that gravitational-wave observations will answer. %It is clear, however, that there are many important and exciting questions to explore.
 
-\textcolor{red}{Can we go bigger picture here and say (briefly) why binary star evolution is interesting and/or important? A very quick summary of the Prospects section?}
+\ilya{What can gravitational-wave observations of merging binaries tell us about massive stellar and binary evolution that preceded the merger?  Can they constrain the amount of mass loss and expansion in massive stars?  The stability and consequences of mass transfer, including the common-envelope phase?  The amount of mass fallback and the kicks received during supernovae that give rise to neutron stars and black holes?  Does the distribution of merging compact objects contain an imprint of the star formation history in the Universe?    Can we use these mergers to probe dynamics in dense stellar environments such as globular clusters?  The answers to these important and exciting questions will in turn influence our understanding of topics as diverse as reionization and heavy-element nucleosynthesis.}
 
-In this colloquium paper, we focus on the questions that strike us as being most interesting and timely at this stage of the field's development.  These will indeed mostly be questions rather than answers, and the list is undoubtedly biased by our own interests. Further, we do not attempt to systematically survey all of the relevant literature.  In other words, this is emphatically {\it not} a review. \textcolor{red}{Can we summarize the questions in one or two sentences? Understanding the evolution of massive stellar binaries? Something else?}
+%\textcolor{red}{Can we go bigger picture here and say (briefly) why binary star evolution is interesting and/or important? A very quick summary of the Prospects section?}
+
+In this colloquium\ilya{-style article}, we focus on the questions that strike us as being most interesting and timely at this stage of the field's development.  These will indeed mostly be questions rather than answers, and the list is undoubtedly biased by our own interests. Further, we do not attempt to systematically survey all of the relevant literature.  In other words, this is emphatically {\it not} a review. %\textcolor{red}{Can we summarize the questions in one or two sentences? Understanding the evolution of massive stellar binaries? Something else?}
 
 
 Below, we summarise the existing observations of merging binary black holes and closely related systems in section \ref{obs}, describe the plausible formation scenarios for binary black holes in \autoref{form}, discuss the predicted merger rates and merging object properties in \autoref{merge}, and speculate about the prospects for gravitational-wave astronomy in \autoref{prospect}.
