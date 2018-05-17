@@ -199,9 +199,14 @@ When the detection of GW150914 was first announced, many were surprised that it 
 \begin{figure}
 	\centering
 	%\includegraphics[trim={1.3cm 7.0cm 0.0cm 7.9cm},clip,scale=0.45]{evolvedPvseWithOrbit.pdf}
-	\includegraphics[width=0.45\textwidth]{M-rp.png}
-	\includegraphics[width=0.45\textwidth]{StellarRadiusZsolar.png}
-	\caption{Maximum initial periapsis separation that a binary black hole with equal-mass components (as given on the ordinate) can have while still merging within the age of the Universe through gravitational-wave emission.	\label{fig:periapsis}  Right panel: maximal stellar extent at solar metallicity during various phases of stellar evolution for a non-rotating star with a given initial mass; based on the COMPAS implementation of single stellar evolution models of \citet{Hurley:2000}. \label{fig:Rmax} Progenitors of binary black holes grow too large to fit into a binary that would merge through gravitational-wave radiation reaction without engaging in mass transfer first.}
+	\includegraphics[width=0.45\textwidth]{M-rp-log.png}
+	\caption{Maximum initial periapsis separation that a binary black hole with equal-mass components (as given on the ordinate) can have while still merging within the age of the Universe through gravitational-wave emission, \ilya{for four different choices of initial eccentricity: $e=0$, 0.9, 0.99, and 0.999 from the top down}.\label{fig:periapsis}}
+\end{figure}
+	
+\begin{figure}
+	\centering	
+	\includegraphics[width=0.45\textwidth]{StellarRadiusZsolarRoche.png}
+\caption{Maximal stellar extent at solar metallicity during various phases of stellar evolution for a non-rotating star with a given initial mass; based on the COMPAS implementation of single stellar evolution models of \citet{Hurley:2000}.   \ilya{The star expands from its zero-age main sequence (ZAMS) size onwards through the main sequence, Hertzsprung gap, and core Helium burning stages (and the asymptotic giant branch for lower-mass stars).  The Roche lobe radius (maximal stellar size beyond which a star would engage in mass transfer) is plotted for an equal mass circular binary which would have the maximum separation to allow a merger within the age of the Universe (see \autoref{fig:periapsis}) assuming initial mass to compact object mass conversion as in \autoref{fig:BHremnant}.}\label{fig:Rmax} }
 \end{figure}
 
 %\todo{Update left panel of plot to show periapsis on horizontal axis.  Take max radial extent plot from Simon?}
