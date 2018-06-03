@@ -21,6 +21,8 @@
 \usepackage{lmodern}
 \usepackage{tablefootnote}
 \usepackage{ulem}
+\usepackage{floatflt}
+\usepackage{wrapfig}
  	
 \colorlet{mycitecolor}{Turquoise}
 \colorlet{mylinkcolor}{Turquoise}
@@ -186,15 +188,38 @@ When the detection of GW150914 was first announced, many were surprised that it 
 \subsection{The Separation Question}
 
 
+%\begin{floatingfigure}[l]{0.5\textwidth}
+%%\begin{minipage}[c]{0.45\textwidth}
+%    	\includegraphics[width=\textwidth]{M-rp-log.png}%[width=\textwidth]{M-rp-log.png}
+%	\caption{Maximum initial periapsis separation that a binary black hole with equal-mass components (as given on the ordinate) can have while still merging within the age of the Universe through gravitational-wave emission, for four different choices of initial eccentricity: $e=0$, 0.9, 0.99, and 0.999 from the top down.\label{fig:periapsis}}
+%%	\end{minipage}
+%	\vspace{-0.8in}
+%\end{floatingfigure}	
+
 \textbf{Only very tight binaries can merge via gravitational waves.} Gravitational-wave emission is a very strong function of separation. During a compact binary merger, the luminosity in gravitational waves is a few thousandths of the Planck luminosity, $c^5/G$ \citep[e.g.,][]{Cardoso:2018}; at nearly $10^{57}$ ergs per second, such mergers ``outshine'' all the stars in the visible Universe combined. But because gravitational-wave luminosity is inversely proportional to the fifth power of the binary separation \citep{Peters:1964}, widely separated binaries lose energy very slowly and undergo only negligible inspiral over billions of years. Only very close binaries can be brought to merger by gravitational waves within the age of the universe; \autoref{fig:periapsis} shows the maximum initial separation for an equal-mass binary to merge on this timescale. For the two 30 $M_\odot$ black holes responsible for GW150914, the initial separation must have been less than $\sim 50 R_\odot$ -- just a quarter of the distance from the Earth to the Sun -- if the merger was driven by gravitational-wave emission alone.
+
 
 \textbf{But the black holes' parent stars can't get so close.} Stars expand as they evolve. Even our Sun will reach roughly an astronomical unit in size during its giant phase; the stars (above $\sim 20 M_\odot$  at birth) that leave behind black holes may reach thousands of solar radii at their maximal extent. Maximum stellar radius as a function of initial mass is plotted in \autoref{fig:Rmax}. We appear to have a problem. If the parent stars begin life at separations from which gravitational waves could bring their remnants together, the stars will expand to sizes larger than their separation as they evolve, and will therefore merge long before they collapse into black holes. If they start sufficiently far apart to avoid merger before collapse, their remnant binaries will take many millions of times the age of the universe to merge. In either case, no gravitational-wave sources would exist today. 
 
 \textbf{The problem is already there at birth.} In fact, for reasonable models of wind-driven mass loss and mass loss during supernovae, even the initial stellar radii at the start of the main sequence are too large to fit into a binary that could merge within the age of the Universe just through gravitational-wave emission.  The black `Roche Lobe' curve in \autoref{fig:Rmax} shows the maximum size that a star could have in order to fit into a circular, merging equal-mass binary (see \autoref{fig:periapsis}).  This size is smaller than the zero-age main sequence radius for all stellar masses shown in the figure: the separation problem thus exists even without accounting for the exacerbating factors of stellar expansion or binary widening through mass loss.
  
+ 
+%\begin{floatingfigure}[l]{7cm}%{0.5\textwidth}
+%%  \hspace{-0.20in}
+%%\begin{minipage}[c]{7cm}%{0.5\textwidth}
+%    	\includegraphics*[width=7cm]{M-rp-log.png}%[width=\textwidth]{M-rp-log.png}
+%%  \end{minipage}\hfill
+%%  \begin{minipage}[c]{0.15\textwidth}
+%	\caption{Maximum initial periapsis separation that a binary black hole with equal-mass components (as given on the ordinate) can have while still merging within the age of the Universe through gravitational-wave emission, for four different choices of initial eccentricity: $e=0$, 0.9, 0.99, and 0.999 from the top down.\label{fig:periapsis}}
+%%\end{minipage}\hfill    
+%%\vspace{-0.1mm}
+%\noindent \hrulefill
+%\end{floatingfigure}
+
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\textwidth]{M-rp-log.png}
+	\includegraphics[width=0.5\textwidth]{M-rp-log.png}
 	\caption{Maximum initial periapsis separation that a binary black hole with equal-mass components (as given on the ordinate) can have while still merging within the age of the Universe through gravitational-wave emission, for four different choices of initial eccentricity: $e=0$, 0.9, 0.99, and 0.999 from the top down.\label{fig:periapsis}}
 \end{figure}
 	
@@ -372,7 +397,7 @@ The intense radiation from massive stars -- whose luminosities may be a hundred 
 \begin{figure}
 	\centering
 	%\includegraphics[trim={1.3cm 7.0cm 0.0cm 7.9cm},clip,scale=0.45]{evolvedPvseWithOrbit.pdf}
-	\includegraphics[width=0.7\textwidth]{BHremnantdelayed.png}
+	\includegraphics[width=0.5\textwidth]{BHremnantdelayed.png}
 	\caption{\label{fig:BHremnant} Remnant compact object mass from single stellar evolution for a given zero-age main sequence stellar mass, following the default COMPAS prescription for winds \citep{Stevenson:2017}  and the `delayed' \citet{Fryer:2012} supernova fallback prescription, at solar ($Z_\odot=0.02$) metallicity (blue) and a tenth solar (red).  COMPAS sets a compact object mass threshold of $2.5 M_\odot$ between neutron stars and black holes.
 	} 
 \end{figure}
