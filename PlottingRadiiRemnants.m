@@ -87,9 +87,9 @@ legend('solar Z','0.1 solar Z','Location','NorthWest');
 figure(4)
 set(gca,'FontSize',14),
 loglog(MZAMS,MCODelayedsol,...
-	MZAMS,MCODelayedten, 'LineWidth',2),
+	MZAMS,MCODelayedten, 'LineWidth',3),
 axis([0.8*min(MZAMS(MCODelayedten~=0)) 1.2*max(MZAMS) 1.0 1.2*max(MCODelayedten)])
-set(gca,'FontSize',20), 
+set(gca,'FontSize',22), grid on;
 xlabel('$M_\textrm{ZAMS} / M_\odot$', 'Interpreter','latex'), 
 ylabel ('$M_\textrm{CO} / M_\odot$', 'Interpreter','latex'),
 %legend('$Z=Z_\odot$','$Z=0.1\,Z_\odot$','Interpreter','latex','Location','NorthWest');
@@ -116,16 +116,16 @@ RLOF=0.49/(0.6+log(1+1));
 amaxinit=(r0HubbleE0/Rsun)*(MCODelayedsol/30).^(3/4);  %from Peters file
 RLOFinit=RLOF*amaxinit;
 figure(6)
-set(gca,'FontSize',14), 
+set(gca,'FontSize',18), 
 loglog(MZAMS,R0sol, ...
     MZAMS,RMSsol,...
     MZAMS(RHGsol~=0),RHGsol(RHGsol~=0),...
     MZAMS(RCHeBsol~=0),RCHeBsol(RCHeBsol~=0),...
     MZAMS(MZAMS<=23.5),REAGBsol(MZAMS<=23.5),...
     MZAMS, RLOFinit,'k-.',...
-    'LineWidth',2), 
+    'LineWidth',4), 
 axis([min(MZAMS(MCORapidsol~=0)) 100 0.8*min(RLOFinit(MCORapidsol~=0)),1.5*max(RCHeBsol)]),
-set(gca,'FontSize',20), 
-xlabel('$M / M_\odot$', 'Interpreter','latex'), 
-ylabel ('$R / R_\odot$', 'Interpreter','latex'),
-legend('ZAMS','MS','HG','CHeB','AGB','Roche Lobe','Location','SouthEastOutside');
+set(gca,'FontSize',26), grid on; 
+xlabel('{\bf $M / M_\odot$}', 'Interpreter','latex','FontSize',30), 
+ylabel ('$R / R_\odot$', 'Interpreter','latex', 'FontSize',30),
+legend('ZAMS','MS','HG','CHeB','AGB','Roche Lobe','Location','East');
