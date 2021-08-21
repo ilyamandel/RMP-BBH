@@ -1,19 +1,30 @@
 %\documentclass[iop,twocolumn, tighten, twocolappendix, numberedappendix]{emulateapj}
 %\documentclass[iop,onecolumn]{revtex4-1}
 %\documentclass[rmp,aps,twocolumn]{revtex4-1}
-\documentclass[rmp,aps]{revtex4-1}
+%\documentclass[rmp,aps]{revtex4-1}
 
-\usepackage[backref,breaklinks,colorlinks,citecolor=blue]{hyperref}  
-\usepackage[all]{hypcap}
-\renewcommand*{\backref}[1]{[#1]}
-\newcommand{\x}{\sout}
+
+%\documentclass{elsarticle}
+%\documentclass[a4paper,fleqn]{cas-sc}
+
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\journal{Physics Reports}
+%\usepackage[authoryear,longnamesfirst]{natbib}
+
+%\usepackage[backref,breaklinks,colorlinks,citecolor=blue]{hyperref}  
+%\usepackage[all]{hypcap}
+%\renewcommand*{\backref}[1]{[#1]}
+%\newcommand{\x}{\sout}
 
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{color}
-\usepackage{natbib}
 \usepackage{xspace}
 \usepackage{nicefrac}
 \bibliographystyle{hapj}
@@ -25,9 +36,10 @@
 \usepackage{ulem}
 \usepackage{floatflt}
 \usepackage{wrapfig}
+
  	
-\colorlet{mycitecolor}{Turquoise}
-\colorlet{mylinkcolor}{Turquoise}
+%\colorlet{mycitecolor}{Turquoise}
+%\colorlet{mylinkcolor}{Turquoise}
 
 \hypersetup{
  citecolor = mycitecolor!\myshade!black,
@@ -61,6 +73,7 @@
 \newcommand{\ajf}[1]{\textcolor{red}{#1}}
 %\newcommand{\ilya}[1]{\textcolor{magenta}{#1}}
 \newcommand{\ilya}[1]{\textcolor{magenta}{\bf{#1}}}
+\newcommand{\resp}[1]{\textcolor{blue}{\bf{#1}}}
 
 \def\be{\begin{equation}}
 \def\ee{\end{equation}}
@@ -72,27 +85,47 @@
 %\submitted{Submitted \today}
 
 \begin{document}
+%\let\WriteBookmarks\relax
+%\def\floatpagepagefraction{1}
+%\def\textpagefraction{.001}
+
+\begin{frontmatter}
+
+% Short title
+%\shorttitle{Merging stellar-mass binary black holes}    
+
+% Short author
+%\shortauthors{Mandel \& Farmer}  
 
 \title{Merging stellar-mass binary black holes}
 %\shorttitle{}
 
-\def\addBham{Institute of Gravitational Wave Astronomy and School of Physics and Astronomy, University of Birmingham, Edgbaston, Birmingham B15 2TT, United Kingdom}
-\def\addMonash{Monash Centre for Astrophysics, School of Physics and Astronomy, Monash University, Clayton, Victoria 3800, Australia}
-
 
 \author{Ilya Mandel}
-\email{imandel@star.sr.bham.ac.uk}
-\affiliation{\addBham\\ and\\ \addMonash}
-\author{Alison Farmer}
-\affiliation{kW Engineering, Oakland, California, 94612, USA}
+%\email{ilya.mandel@monash.edu}
+%\cormark
+\ead{ilya.mandel@monash.edu}
+%\affiliation{Monash Centre for Astrophysics, School of Physics and Astronomy, Monash University, Clayton, Victoria 3800, Australia\\
+%and\\
+%OzGrav, ARC Centre of Excellence for Gravitational Wave Discovery, Australia\\ 
+%and\\ 
+%Institute of Gravitational Wave Astronomy and School of Physics and Astronomy, University of Birmingham, Edgbaston, Birmingham B15 2TT, United Kingdom}
+%\author{Alison Farmer}
+%\affiliation{kW Engineering, Oakland, California, 94612, USA}
 
 \begin{abstract}
-
 The LIGO and Virgo detectors have recently directly observed gravitational waves from several mergers of pairs of stellar-mass black holes, as well as from one merging pair of neutron stars.  These observations raise the hope that compact object mergers could be used as a probe of stellar and binary evolution, and perhaps of stellar dynamics. This colloquium-style article summarizes the existing observations, describes theoretical predictions for formation channels of merging stellar-mass black-hole binaries along with their rates and observable properties, and presents some of the prospects for gravitational-wave astronomy.
-
 \end{abstract}
 
-\maketitle
+%\begin{keyword}
+%Doh
+%\end{keyword}
+
+%\maketitle
+
+\end{frontmatter}
+
+\linenumbers
 
 \section{Introduction}
 
@@ -215,7 +248,7 @@ When the detection of GW150914 was first announced, many were surprised that it 
 
 Three leading formation scenarios have been proposed for merging compact-object binaries: (i) finely tuned binary evolution that brings the stars closer as they expand and interact; (ii) finely tuned stellar evolution that prevents the parent stars from expanding at all; and (iii) assembly of a close binary from black holes that formed from stars not born in the same binary. Contrived as these scenarios sound, all three might plausibly contribute to the production of binary black hole mergers.  And as we'll see in \autoref{merge}, only a small fraction of stars, of order one in a million, need to end up in merging black\ilya{-}hole binaries in order to explain the observed merger rates: even quite unusual or (apparently) finely tuned evolutionary pathways could therefore be viable candidates.
 
-We explore the three leading formation scenarios in more detail below, as well as the possibility that some combination of these effects may occur on the way to merger. We won't discuss some of the more exotic proposed mechanisms, such as the fragmentation of a single stellar core into two black holes \citep{Loeb:2016} \ilya{(\citet{Woosley:2016} and \citet{Dai:2017} discuss the problems with this picture)} or non-astrophysical formation scenarios such as primordial black holes of cosmological origin \citep[e.g.,][]{Bird:2016}.
+We explore the three leading formation scenarios in more detail below, as well as the possibility that some combination of these effects may occur on the way to merger. We \ilya{will not} discuss some of the more exotic proposed mechanisms, such as the fragmentation of a single stellar core into two black holes \citep{Loeb:2016} \ilya{(\citet{Woosley:2016} and \citet{Dai:2017} discuss the problems with this picture)} or non-astrophysical formation scenarios such as primordial black holes of cosmological origin \citep[e.g.,][]{Bird:2016}.
 
 \subsection{The Candidate Formation Scenarios}
 \subsubsection{Coming closer later in life: classical isolated binary evolution via the common-envelope phase}
@@ -332,7 +365,7 @@ The star formation rate in the local Universe is $\sim 0.01 M_\odot$ Mpc$^{-3}$ 
 
 \subsubsection{Chemically homogeneous evolution}
 
-We can write a similar Drake's equation for the chemically homogeneous evolution channel.  Following \citet{MandeldeMink:2016},  the yield fraction is
+We can write a similar Drake\resp{-like} equation for the chemically homogeneous evolution channel.  Following \citet{MandeldeMink:2016},  the yield fraction is
 \begin{eqnarray}
 f_\textrm{BBH} &=& f_\textrm{primary} \times f_\textrm{secondary} \times f_\textrm{init sep} \times f_Z \times f_\textrm{merge} \nonumber \\
  & \sim & 0.0002 \times 0.5 \times 0.1 \times 0.1 \times 1 = 10^{-6}.
@@ -348,7 +381,7 @@ We can estimate an upper limit on the merger rate of dynamically formed binary b
 Young massive star clusters could add to this rate \citep[e.g.,][]{Ziosi:2014}, as could galactic nuclear clusters \citep[e.g.,][]{MillerLauburg:2008,Bartos:2016,Stone:2016,AntoniniRasio:2016}.  On the other hand, in practice, the overall merger rate from the dynamical formation channel is likely to be at least a factor of a few lower for the following reasons:
 \begin{enumerate}
 	\item [1.]
-Some single black holes will be ejected from the cluster during the three-body interactions that harden the binaries.  If the masses of all interacting objects are similar, the ejected object receives a kick that is comparable to the orbital speed of the binary.  The last scattering interaction must harden the binary to a sufficiently small separation for gravitational-wave emission to take over. The minimum orbital velocity of an equal-mass circular binary that can merge in the age of the Universe through gravitational-wave emission is $\sim 200$ km s$^{-1}$; this scales only weakly with the binary's mass, as $v \propto \sqrt{M/a}  \propto \sqrt{M/M^{3/4}} \propto M^{1/8}$ (see \autoref{fig:periapsis} and \citet{Peters:1964}).   This minimum velocity is larger than the typical globular cluster escape velocity, $\lesssim 50$ km s$^{-1}$, hence many interlopers, including some black holes, will be ejected.
+Some single black holes will be ejected from the cluster during the three-body interactions that harden the binaries.  If the masses of all interacting objects are similar, the ejected object receives a kick that is comparable to the orbital speed of the binary.  The last scattering interaction must harden the binary to a sufficiently small separation for gravitational-wave emission to take over. The minimum orbital velocity of an equal-mass circular binary that can merge in the age of the Universe through gravitational-wave emission is \resp{$\sim 500$ km s$^{-1}$}; this scales only weakly with the binary's mass, as $v \propto \sqrt{M/a}  \propto \sqrt{M/M^{3/4}} \propto M^{1/8}$ (see \autoref{fig:periapsis} and \citet{Peters:1964}).   This minimum velocity is larger than the typical globular cluster escape velocity, $\lesssim 50$ km s$^{-1}$, hence many interlopers, including some black holes, will be ejected.
 	\item[2.]
 Following such a 3-body interaction, the binary itself must recoil in the opposite direction from the ejected single star (to conserve momentum). Although this recoil velocity is reduced by the ratio of the binary's mass to the interloper mass --- typically greater than $2:1$, as the lightest body is ejected --- the binary may still be ejected from the cluster before it is sufficiently tight to merge through radiation reaction alone.
 \item[3.] If most mergers happen soon after globular cluster formation, the local merger rate would be low because the majority of globular clusters are old \citep{Rodriguez:2016big}.
@@ -453,15 +486,22 @@ At the same time, we have the tools in place to create detailed models of stella
 The future of gravitational-wave astronomy holds the thrilling prospect of addressing the inverse problem of massive binary stellar evolution: inferring the formation channels and their physics from observations of the merging compact-object binary population.  Like a paleontologist who uses her knowledge of anatomy to determine the appearance, eating habits, and even behavior of extinct dinosaurs from their fossilized remnants, we can now use merging black holes --- remnants of massive stars --- to probe the behavior of those stars, and particularly their evolution in binaries.
 
 
-\begin{acknowledgements}
+\section*{Acknowledgements}
 We would like to thank Christopher Berry, Cole Miller, Fred Rasio, Dorottya Sz\'{e}csi, and Thomas Tauris for comments that significantly improved this manuscript, and Lev Yungelson and Ed van den Heuvel for providing a historical perspective.
 
-IM is grateful to the students who contributed to building COMPAS (Jim Barrett, Sebastian Gaebel, Coenraad Neijssel, Simon Stevenson, Alejandro Vigna G\'{o}mez) and external collaborators (including Stephen Justham, Philipp Podsiadlowski, and especially Selma de Mink).  Coenraad Neijssel deserves additional gratitude for assistance with figures \ref{fig:Rmax} and \ref{fig:BHremnant}. Thanks also to  Will Farr, Vicky Kalogera and Gijs Nelemans for stimulating discussions spanning many years.
+IM is grateful to the students who contributed to building COMPAS (Jim Barrett, Sebastian Gaebel, Coenraad Neijssel, Simon Stevenson, Alejandro Vigna G\'{o}mez) and external collaborators (including Stephen Justham, Philipp Podsiadlowski, and especially Selma de Mink).  Coenraad Neijssel deserves additional gratitude for assistance with figures \ref{fig:Rmax} and \ref{fig:BHremnant}. Thanks also to  Will Farr, Vicky Kalogera and Gijs Nelemans for stimulating discussions spanning many years.  \resp{Parts of this research were supported by the Australian Research Council Centre of Excellence for Gravitational Wave Discovery (OzGrav), through project number CE170100004.  IM is a recipient of the Australian Research Council Future Fellowship FT190100574.}
 
 AF is grateful for the astro-tourism.
-\end{acknowledgements}
+%\end{acknowledgements}
 
-\bibliographystyle{hapj}
+\section*{References}
+%\bibliographystyle{hapj}
+%\bibliography{Mandel}
+
+%\bibliographystyle{cas-model2-names}
+%\bibliographystyle{elsarticle-num}
+
+% Loading bibliography database
 \bibliography{Mandel}
 
 \end{document}
