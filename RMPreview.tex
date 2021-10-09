@@ -101,20 +101,18 @@
 %\shorttitle{}
 
 
-\author{Ilya Mandel}
+\author[1,2,3]{Ilya Mandel}
 %\email{ilya.mandel@monash.edu}
 %\cormark
 \ead{ilya.mandel@monash.edu}
-%\affiliation{Monash Centre for Astrophysics, School of Physics and Astronomy, Monash University, Clayton, Victoria 3800, Australia\\
-%and\\
-%OzGrav, ARC Centre of Excellence for Gravitational Wave Discovery, Australia\\ 
-%and\\ 
-%Institute of Gravitational Wave Astronomy and School of Physics and Astronomy, University of Birmingham, Edgbaston, Birmingham B15 2TT, United Kingdom}
-%\author{Alison Farmer}
-%\affiliation{kW Engineering, Oakland, California, 94612, USA}
+\affiliation[1]{organization={Monash Centre for Astrophysics, School of Physics and Astronomy, Monash University}, city={Clayton, Victoria}, citysep={}, postcode={3800}, country={Australia}}
+\affiliation[2]{organization={OzGrav, ARC Centre of Excellence for Gravitational Wave Discovery}, \country={Australia}}
+\affiliation[3]{organization={Institute of Gravitational Wave Astronomy and School of Physics and Astronomy, University of Birmingham}, city={Birmingham}, citysep={}, postcode={B15 2TT}, \country={United Kingdom}}
+\author[4]{Alison Farmer}
+\affiliation[4]{organization={kW Engineering}, city={Oakland}, state={California}, postcode={94612}, \country={USA}}
 
 \begin{abstract}
-The LIGO and Virgo detectors have recently directly observed gravitational waves from several mergers of pairs of stellar-mass black holes, as well as from one merging pair of neutron stars.  These observations raise the hope that compact object mergers could be used as a probe of stellar and binary evolution, and perhaps of stellar dynamics. This colloquium-style article summarizes the existing observations, describes theoretical predictions for formation channels of merging stellar-mass black-hole binaries along with their rates and observable properties, and presents some of the prospects for gravitational-wave astronomy.
+The LIGO and Virgo detectors have directly observed gravitational waves from mergers of pairs of stellar-mass black holes, along with a smaller number of mergers involving neutron stars.  These observations raise the hope that compact object mergers could be used as a probe of stellar and binary evolution, and perhaps of stellar dynamics. This colloquium-style article summarizes the existing observations, describes theoretical predictions for formation channels of merging stellar-mass black-hole binaries along with their rates and observable properties, and presents some of the prospects for gravitational-wave astronomy.
 \end{abstract}
 
 %\begin{keyword}
@@ -129,10 +127,9 @@ The LIGO and Virgo detectors have recently directly observed gravitational waves
 
 \section{Introduction}
 
-\ilya{Our goal is to present an informal, colloquium-style article on the subject of} merging stellar-mass black-hole binaries as gravitational-wave sources. Several reviews were written in the excitement following the first detection \citep{GW150914} of gravitational waves by the Laser Interferometer Gravitational-wave Observatory (LIGO) \citep{GW150914:detectors}, including the astrophysical context companion paper by the the LIGO-Virgo scientific collaboration \citep{GW150914:astro} and the excellent article by \citet{Miller:2016}. However, it is somewhat premature to formally review a field that is both rapidly evolving and very much in its infancy.  With just a few detections to date of gravitational waves from merging black holes \citep{GW150914,GW151226,BBH:O1,GW170104,GW170608,GW170814}, and one from merging neutron stars \citep{GW170817}, we are only beginning to explore the population of merging compact-object binaries.  \ilya{The understanding of the formation channels for these sources is evolving with each new detection.} 
-%We are not yet certain even of the dominant formation channels for these sources; \ilya{our
+Our goal is to present an informal, colloquium-style article on the subject of merging stellar-mass black-hole binaries as gravitational-wave sources. Several reviews were written in the excitement following the first detection \citep{GW150914} of gravitational waves by the Laser Interferometer Gravitational-wave Observatory (LIGO) \citep{GW150914:detectors}, including the astrophysical context companion paper by the the LIGO-Virgo scientific collaboration \citep{GW150914:astro} and the excellent article by \citet{Miller:2016}.  More recent contributions included reviews by \citet{Mapelli:2018,Mapelli:2021} and a compilation of compact binary merger rate measurements and predictions by \citet{MandelBroekgaarden:2021}. However, it is challenging to formally review a field that is both rapidly evolving and still very much in its infancy.  With around 50 detections of gravitational waves from merging black holes \citep{,BBH:O1,BBH:O2,Venumadhav:2020,GWTC2,Abbott:2021-GWTC-2-1,Nitz:2021}, along with two from merging neutron stars \citep{GW170817, GW190425} and two from mergers of neutron stars with black holes \citep{GW200105}, we are only beginning to explore the population of merging compact-object binaries.  The understanding of the formation channels for these sources is evolving with each new data release.
 
-The full range of astrophysical questions that gravitational-wave observations will answer is itself a topic of active study and debate. \ilya{For example:} What can gravitational-wave observations of merging binaries tell us about the stellar and binary evolution that preceded the mergers?  Can the observations constrain the amount of mass loss and expansion experienced by massive stars? Or the stability and consequences of mass transfer, including the infamous common-envelope phase of evolution? Or the amount of mass fallback during supernova explosions, or the kicks that supernovae impart to compact objects? Does the redshift distribution of merging compact objects contain an imprint of the star formation history of the Universe?  Can we use these mergers to probe dynamics in dense stellar environments such as globular clusters? The answers to these important and exciting questions may also in turn influence our understanding of topics as diverse as reionization and heavy-element nucleosynthesis.
+The full range of astrophysical questions that gravitational-wave observations will answer is itself a topic of active study and debate. For example: What can gravitational-wave observations of merging binaries tell us about the stellar and binary evolution that preceded the mergers?  Can the observations constrain the amount of mass loss and expansion experienced by massive stars? Or the stability and consequences of mass transfer, including the infamous common-envelope phase of evolution? Or the amount of mass fallback during supernova explosions, or the kicks that supernovae impart to compact objects? Does the redshift distribution of merging compact objects contain an imprint of the star formation history of the Universe?  Can we use these mergers to probe dynamics in dense stellar environments such as globular clusters? The answers to these important and exciting questions may also in turn influence our understanding of topics as diverse as reionization and heavy-element nucleosynthesis.
 
 In this article, we focus on the questions that strike us as being most interesting and timely at this stage of the field's development.  The choice of these questions is undoubtedly biased by our own interests. Further, we do not attempt to systematically survey all of the relevant literature.  In other words, this is emphatically {\it not} a review \citep{magritte}. 
 
@@ -154,21 +151,6 @@ The gravitational-wave signature encodes the properties of the merging binary bl
 
 \subsubsection{Information extracted from the observed gravitational-wave signals}
 We list the parameters of the black\ilya{-}hole binaries observed to date in table \ref{table:BHmasses}. Specific system properties are discussed below.
-
-\begin{table}
-\begin{tabular}{lcccccc}
-Event  & $M_c$ [$M_\odot$]  & $q$ & $M_1$ [$M_\odot$]  & $M_2$ [$M_\odot$]  & $\chi_\textrm{eff}$ & $d_L$ [Mpc] \\
-\hline
-GW150914\footnote{\citet{BBH:O1}} & $28.1^{+1.8}_{-1.5}$ & $0.81^{+0.17}_{-0.2}$ & $36.2^{+5.2}_{-3.8}$ & $29.1^{+3.7}_{-4.4}$ & $-0.06^{+0.14}_{-0.14}$ & $420^{+150}_{-180}$\\
-LVT151012$^\mathrm{a}$ & $15.1^{+1.4}_{-1.1}$ &$0.57^{+0.38}_{-0.37}$ &$23^{+18}_{-6}$ &$13^{+4}_{-5}$ &$0.03^{+0.31}_{-0.20}$ &$1020^{+500}_{-490}$\\
-GW151226$^\mathrm{a}$ & $8.88^{+0.33}_{-0.28}$ &$0.52^{+0.40}_{-0.29}$ &$14.2^{+8.3}_{-3.7}$ &$7.5^{+2.3}_{-2.3}$ &$0.21^{+0.20}_{-0.10}$ &$440^{+180}_{-190}$ \\
-GW170104\footnote{\citet{GW170104}} & $25.1^{+2.5}_{-3.9}$ &$0.62^{+0.32}_{-0.26}$ &$31.2^{+8.4}_{-6.0}$ &$19.4^{+5.3}_{-5.9}$ &$-0.12^{+0.21}_{-0.30}$ &$880^{+450}_{-390}$\\
-GW170608\footnote{\citet{GW170608}} & $7.9^{+0.2}_{-0.2}$ &$0.6^{+0.3}_{-0.4}$ &$12^{+7}_{-2}$ &$7^{+2}_{-2}$ &$0.07^{+0.23}_{-0.09}$ &$340^{+140}_{-140}$ \\
-GW170814\footnote{\citet{GW170814}} & $24.1^{+1.4}_{-1.1}$ & &$30.5^{+5.7}_{-3.0}$ &$25.3^{+2.8}_{-4.2}$ &$0.06^{+0.12}_{-0.12}$ & $540^{+130}_{-210}$ \\
-\hline
-\end{tabular}
-\caption{The parameters of merging binary black holes inferred from gravitational-wave observations: chirp mass $M_c$, mass ratio $q=M_2/M_1$, component masses $M_1$ and $M_2$, effective spin $\chi_\textrm{eff}$, and luminosity distance $d_L$.  The median value and the 90\% credible interval bounds are given.}\label{table:BHmasses}
-\end{table}
 
 \textbf{Masses:} The individual black\ilya{-}hole masses span a range from $\ilya{\simeq} 7 M_\odot$ to $\ilya{\simeq} 35 M_\odot$.  The masses appear to be roughly uniformly distributed over this range.  However, there is a significant selection bias  toward detecting more massive systems, because sensitivity to gravitational waves from binary mergers depends on the system mass.  The gravitational-wave amplitude, and hence the maximum (horizon) distance at which a source is detectable, scales as $M_c^{5/6}$ for inspiral-dominated signals. The surveyed volume therefore scales as $M_c^{2.5}$.  While the existing observations are not sufficient to accurately determine the mass distribution of merging binary black holes, the observed broad mass distribution, deconvolved with the mass-dependent selection effects, could be consistent with an intrinsic mass distribution of \ilya{$M^{-2.3_{-1.4}^{+1.3}}$} \citep{BBH:O1,GW170104}, reminiscent of the stellar initial mass function \citep{Salpeter:1955}.  The uncertainty in the mass distribution is relayed into the uncertainty on inferred merger rates, which are consistent with a broad range spanning $\sim 10$ -- $200$ Gpc$^{-3}$ yr$^{-1}$ \citep{GW170104}.  
 
@@ -321,7 +303,7 @@ Of course, the channels outlined above need not be distinct, and the same binary
 
 Hierarchical triple systems, with a tight inner binary and a third companion on a wider outer orbit are a particularly promising combination of the isolated evolution and dynamical formation channels.  A significant fraction of massive stars appear to be born in triples and higher multiplicity systems \citep{DucheneKraus:2013}.  Triples may also be formed dynamically through binary--binary scatterings \citep{MillerHamilton:2002b}.  Massive black holes in galactic nuclei --- or intermediate-mass black holes in globular clusters --- may also act as effective triple companions.   
 
-When the outer binary's orbit is $\gtrsim 5$ times wider than the inner orbit, the triple will be stable (though it may still be driven to instability by mass loss \citep[e.g.,][]{PeretsKratter:2012}).  If the inner and outer orbits in a stable triple have a high relative inclination angle, the transfer of angular momentum between these orbits can increase the eccentricity of the inner binary while keeping its semi-major axis roughly constant. For suitable initial conditions, these Lidov-Kozai oscillations in eccentricity and orbital inclination \citep{Lidov:1962,Kozai:1962} may lead to a drastic growth in the inner binary's eccentricity \citep[for a review, see][]{Naoz:2016}, reducing the binary's periapsis to the point where gravitational-wave emission can harden the binary to merger.  Recent arguments that Lidov-Kozai cycles could contribute to binary black hole mergers include \citet{SilbeeTremaine:2017} who explored isolated triples, \citet{Antonini:2016} in the context of dynamically formed triples in globular clusters, and \citet{Hoang:2018} who considered triples with a galactic-center massive black hole as the outer companion.
+When the outer binary's orbit is $\gtrsim 5$ times wider than the inner orbit, the triple will be stable (though it may still be driven to instability by mass loss \citep[e.g.,][]{PeretsKratter:2012}).  If the inner and outer orbits in a stable triple have a high relative inclination angle, the transfer of angular momentum between these orbits can increase the eccentricity of the inner binary while keeping its semi-major axis roughly constant. For suitable initial conditions, these Lidov-Kozai oscillations in eccentricity and orbital inclination \citep{Lidov:1962,Kozai:1962} may lead to a drastic growth in the inner binary's eccentricity \citep[for a review, see][]{Naoz:2016}, reducing the binary's periapsis to the point where gravitational-wave emission can harden the binary to merger.  Recent arguments that Lidov-Kozai cycles could contribute to binary black hole mergers include \citet{SilsbeeTremaine:2017} who explored isolated triples, \citet{Antonini:2016} in the context of dynamically formed triples in globular clusters, and \citet{Hoang:2018} who considered triples with a galactic-center massive black hole as the outer companion.
 
 
 \section{Expected properties of merging systems}\label{merge}
@@ -507,5 +489,7 @@ AF is grateful for the astro-tourism.
 \end{document}
 
 Vicky: refs on p. 4 (list of other observables), 5 (XRBs and their discussion),  bottom of 6, 8, bottom of 9, top of 10, 16, 17, 18, check 19, 
+
+isolated channel: Srinivasan 1989? BBHs: Braginsky & Thorne (check Levin's FB)?
 
 
