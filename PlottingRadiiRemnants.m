@@ -129,3 +129,78 @@ set(gca,'FontSize',26), grid on;
 xlabel('{\bf $M / M_\odot$}', 'Interpreter','latex','FontSize',30), 
 ylabel ('$R / R_\odot$', 'Interpreter','latex', 'FontSize',30),
 legend('ZAMS','MS','HG','CHeB','AGB','Roche Lobe','Location','East');
+
+
+%Redo figures 3,4 of Mandel & Farmer
+M=zeros(500,1); R0=zeros(500,1); RMS=zeros(500,1); RHG=zeros(500,1); RHeB=zeros(500,1); RAGB=zeros(500,1); MCO=zeros(500,1);
+%solar, Z=0.0142
+prefix='/Users/ilyam/Work/COMPAS/COMPAS/examples/methods_paper_plots/fig_6_max_R/COMPAS_Output/Detailed_Output/BSE_Detailed_Output_';
+for(i=1:500),
+    file=[prefix,num2str(i-1),'.h5'];
+    mass=h5read(file,'/Mass(1)');
+    radius=h5read(file,'/Radius(1)');
+    time=h5read(file,'/Time');
+    ST=h5read(file,'/Stellar_Type(1)');
+    M(i)=mass(1);
+    R0(i)=radius(1);
+    if(~isempty(max(radius(ST==1 | ST==0)))),  RMS(i)=max(radius(ST==1 | ST==0)); end;
+    if(~isempty(max(radius(ST==2)))), RHG(i)=max(radius(ST==2)); end;
+    if(~isempty(max(radius(ST==3 | ST==4)))), RHeB(i)=max(radius(ST==3 | ST==4)); end;
+    if(~isempty(max(radius(ST==5 | ST==6)))), RAGB(i)=max(radius(ST==5 | ST==6)); end;
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCO(i)=mass(length(mass)); end;
+end;
+%Z=0.001
+Mlow=zeros(500,1); MCOlow=zeros(500,1);
+for(i=1:500),
+    file=[prefix,num2str(i+499),'.h5'];
+    mass=h5read(file,'/Mass(1)');
+    ST=h5read(file,'/Stellar_Type(1)');
+    Mlow(i)=mass(1);
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
+end;
+    
+figure(11)
+set(gca,'FontSize',14), 
+semilogy(M,R0, ...
+    M,RMS,...
+    M(RHG~=0),RHG(RHG~=0),...
+    M(RHeB~=0),RHeB(RHeB~=0),...
+    M(RAGB~=0),RAGB(RAGB~=0),...
+    'LineWidth',2), 
+axis([0 100 0.8*min(R0sol),1.5*max(RCHeBsol)]),
+set(gca,'FontSize',20), 
+xlabel('$M / M_\odot$', 'Interpreter','latex'), 
+ylabel ('$R / R_\odot$', 'Interpreter','latex'),
+legend('ZAMS','MS','HG','CHeB','AGB','Location','SouthEast');
+    
+figure(14)
+set(gca,'FontSize',14),
+loglog(M,MCO,'*',...
+	Mlow,MCOlow,'*', 'LineWidth',3),
+axis([0.8*min(Mlow(MCOlow~=0)) 1.2*max(M) 1.0 1.2*max(MCOlow)])
+set(gca,'FontSize',22), grid on;
+xlabel('$M_\textrm{ZAMS} / M_\odot$', 'Interpreter','latex'), 
+ylabel ('$M_\textrm{CO} / M_\odot$', 'Interpreter','latex'),
+%legend('$Z=Z_\odot$','$Z=0.1\,Z_\odot$','Interpreter','latex','Location','NorthWest');
+legend('Z=0.0142','Z=0.001','Location','NorthWest');
+
+figure(16)
+RLOF=0.49/(0.6+log(2));
+Msunkg=1.98892e30;	c=299792458;		G=6.67428e-11;		Rsun = 695500000; 
+T0=14*1e9*3.15e7;
+beta=64/5*G^3*MCO.^2.*(MCO+MCO)*Msunkg^3/c^5;
+amaxinit=(T0*4*beta).^0.25;
+RLOFinit=RLOF*amaxinit/Rsun;
+set(gca,'FontSize',18), 
+loglog(M,R0, ...
+    M,RMS,...
+    M(RHG~=0),RHG(RHG~=0),...
+    M(RHeB~=0),RHeB(RHeB~=0),...
+    M(RAGB~=0 & RAGB>RHeB),RAGB(RAGB~=0 & RAGB>RHeB),...
+    M(MCO~=0), RLOFinit(MCO~=0),'k-.',...
+    'LineWidth',4), 
+axis([min(M(MCO~=0)) 100 0.8*min(RLOFinit(MCO~=0)),1.5*max(max(RHeB),max(RAGB))]),
+set(gca,'FontSize',26), grid on; 
+xlabel('{\bf $M / M_\odot$}', 'Interpreter','latex','FontSize',30), 
+ylabel ('$R / R_\odot$', 'Interpreter','latex', 'FontSize',30),
+legend('ZAMS','MS','HG','HeB','AGB','Roche Lobe','Location','East');
