@@ -191,7 +191,7 @@ end;
 %Redo figures 3,4 of Mandel & Farmer using SSE file
 M=zeros(N,1); R0=zeros(N,1); RMS=zeros(N,1); RHG=zeros(N,1); RHeB=zeros(N,1); RAGB=zeros(N,1); MCO=zeros(N,1);
 %solar, Z=0.0142
-prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmerSmallStep/Detailed_Output/SSE_Detailed_Output_';
+prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmerSmallStepZ0001/Detailed_Output/SSE_Detailed_Output_';
 for(i=1:N),
     file=[prefix,num2str(i-1),'.h5'];
     mass=h5read(file,'/Mass');
@@ -260,7 +260,7 @@ xlabel('$M / M_\odot$', 'Interpreter','latex'),
 ylabel ('$R / R_\odot$', 'Interpreter','latex'),
 legend('ZAMS','MS','HG','CHeB','AGB','Location','SouthEast');
     
-figure(141)
+figure(142)
 set(gca,'FontSize',14),
 loglog(M,MCO,'*',...
 	Mlow,MCOlow,'*', 'LineWidth',3),
