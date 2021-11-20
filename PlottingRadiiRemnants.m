@@ -131,7 +131,92 @@ ylabel ('$R / R_\odot$', 'Interpreter','latex', 'FontSize',30),
 legend('ZAMS','MS','HG','CHeB','AGB','Roche Lobe','Location','East');
 
 
-%Redo figures 3,4 of Mandel & Farmer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%recreate grid file -- BSE
+%circular binaries with a separation so wide that they are effectively single
+m1=1.5*10.^[0:0.01:2]; N=length(m1);
+file=fopen('/Users/ilyam/Work/COMPAS/COMPAS/src/BSEgridMandelFarmer.txt','w');
+for(i=1:N),
+    gridline=['--initial-mass-1 ', num2str(m1(i)), ' --initial-mass-2 0.1 --metallicity 0.0142 --eccentricity 0.0 --semi-major-axis 1e+20\n'];
+    fprintf(file,gridline);
+end;
+for(i=1:N),
+    gridline=['--initial-mass-1 ', num2str(m1(i)), ' --initial-mass-2 0.1 --metallicity 0.001 --eccentricity 0.0 --semi-major-axis 1e+20\n'];
+    fprintf(file,gridline);
+end;
+fclose(file);
+
+%recreate grid file -- SSE
+file=fopen('/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmer.txt','w');
+for(i=1:N),
+    gridline=['--initial-mass ', num2str(m1(i)), ' --metallicity 0.0142\n'];
+    fprintf(file,gridline);
+end;
+for(i=1:N),
+    gridline=['--initial-mass ', num2str(m1(i)), ' --metallicity 0.001\n'];
+    fprintf(file,gridline);
+end;   
+fclose(file);
+
+%Redo figures 3,4 of Mandel & Farmer using new BSE file
+M=zeros(N,1); R0=zeros(N,1); RMS=zeros(N,1); RHG=zeros(N,1); RHeB=zeros(N,1); RAGB=zeros(N,1); MCO=zeros(N,1);
+%solar, Z=0.0142
+prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/BSEgridMandelFarmer/Detailed_Output/BSE_Detailed_Output_';
+for(i=1:N),
+    file=[prefix,num2str(i-1),'.h5'];
+    mass=h5read(file,'/Mass(1)');
+    radius=h5read(file,'/Radius(1)');
+    time=h5read(file,'/Time');
+    ST=h5read(file,'/Stellar_Type(1)');
+    M(i)=mass(1);
+    R0(i)=radius(1);
+    if(~isempty(max(radius(ST==1 | ST==0)))),  RMS(i)=max(radius(ST==1 | ST==0)); end;
+    if(~isempty(max(radius(ST==2)))), RHG(i)=max(radius(ST==2)); end;
+    if(~isempty(max(radius(ST==3 | ST==4)))), RHeB(i)=max(radius(ST==3 | ST==4)); end;
+    if(~isempty(max(radius(ST==5 | ST==6)))), RAGB(i)=max(radius(ST==5 | ST==6)); end;
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCO(i)=mass(length(mass)); end;
+end;
+%Z=0.001
+Mlow=zeros(N,1); MCOlow=zeros(N,1);
+for(i=1:N),
+    file=[prefix,num2str(i+N-1),'.h5'];
+    mass=h5read(file,'/Mass(1)');
+    ST=h5read(file,'/Stellar_Type(1)');
+    Mlow(i)=mass(1);
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
+end;
+
+
+%Redo figures 3,4 of Mandel & Farmer using SSE file
+M=zeros(N,1); R0=zeros(N,1); RMS=zeros(N,1); RHG=zeros(N,1); RHeB=zeros(N,1); RAGB=zeros(N,1); MCO=zeros(N,1);
+%solar, Z=0.0142
+prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmer/Detailed_Output/SSE_Detailed_Output_';
+for(i=1:N),
+    file=[prefix,num2str(i-1),'.h5'];
+    mass=h5read(file,'/Mass');
+    radius=h5read(file,'/Radius');
+    time=h5read(file,'/Time');
+    ST=h5read(file,'/Stellar_Type');
+    M(i)=mass(1);
+    R0(i)=radius(1);
+    if(~isempty(max(radius(ST==1 | ST==0)))),  RMS(i)=max(radius(ST==1 | ST==0)); end;
+    if(~isempty(max(radius(ST==2)))), RHG(i)=max(radius(ST==2)); end;
+    if(~isempty(max(radius(ST==3 | ST==4)))), RHeB(i)=max(radius(ST==3 | ST==4)); end;
+    if(~isempty(max(radius(ST==5 | ST==6)))), RAGB(i)=max(radius(ST==5 | ST==6)); end;
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCO(i)=mass(length(mass)); end;
+end;
+%Z=0.001
+Mlow=zeros(N,1); MCOlow=zeros(N,1);
+for(i=1:N),
+    file=[prefix,num2str(i+N-1),'.h5'];
+    mass=h5read(file,'/Mass');
+    ST=h5read(file,'/Stellar_Type');
+    Mlow(i)=mass(1);
+    if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
+end;
+
+%Redo figures 3,4 of Mandel & Farmer using old BSE file
 M=zeros(500,1); R0=zeros(500,1); RMS=zeros(500,1); RHG=zeros(500,1); RHeB=zeros(500,1); RAGB=zeros(500,1); MCO=zeros(500,1);
 %solar, Z=0.0142
 prefix='/Users/ilyam/Work/COMPAS/COMPAS/examples/methods_paper_plots/fig_6_max_R/COMPAS_Output/Detailed_Output/BSE_Detailed_Output_';
@@ -159,7 +244,7 @@ for(i=1:500),
     if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
 end;
     
-figure(11)
+figure(110)
 set(gca,'FontSize',14), 
 semilogy(M,R0, ...
     M,RMS,...
@@ -173,7 +258,7 @@ xlabel('$M / M_\odot$', 'Interpreter','latex'),
 ylabel ('$R / R_\odot$', 'Interpreter','latex'),
 legend('ZAMS','MS','HG','CHeB','AGB','Location','SouthEast');
     
-figure(14)
+figure(140)
 set(gca,'FontSize',14),
 loglog(M,MCO,'*',...
 	Mlow,MCOlow,'*', 'LineWidth',3),
@@ -184,7 +269,7 @@ ylabel ('$M_\textrm{CO} / M_\odot$', 'Interpreter','latex'),
 %legend('$Z=Z_\odot$','$Z=0.1\,Z_\odot$','Interpreter','latex','Location','NorthWest');
 legend('Z=0.0142','Z=0.001','Location','NorthWest');
 
-figure(16)
+figure(160)
 RLOF=0.49/(0.6+log(2));
 Msunkg=1.98892e30;	c=299792458;		G=6.67428e-11;		Rsun = 695500000; 
 T0=14*1e9*3.15e7;
