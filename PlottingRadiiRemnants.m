@@ -154,7 +154,7 @@ for(i=1:N),
     fprintf(file,gridline);
 end;
 for(i=1:N),
-    gridline=['--initial-mass ', num2str(m1(i)), ' --metallicity 0.001\n'];
+    gridline=['--initial-mass ', num2str(m1(i)), ' --metallicity 0.0001\n'];
     fprintf(file,gridline);
 end;   
 fclose(file);
@@ -191,15 +191,17 @@ end;
 %Redo figures 3,4 of Mandel & Farmer using SSE file
 M=zeros(N,1); R0=zeros(N,1); RMS=zeros(N,1); RHG=zeros(N,1); RHeB=zeros(N,1); RAGB=zeros(N,1); MCO=zeros(N,1);
 %solar, Z=0.0142
-prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmer/Detailed_Output/SSE_Detailed_Output_';
+prefix='/Users/ilyam/Work/COMPAS/COMPAS/src/SSEgridMandelFarmerSmallStep/Detailed_Output/SSE_Detailed_Output_';
 for(i=1:N),
     file=[prefix,num2str(i-1),'.h5'];
     mass=h5read(file,'/Mass');
     radius=h5read(file,'/Radius');
     time=h5read(file,'/Time');
     ST=h5read(file,'/Stellar_Type');
+    dT=h5read(file,'/dT');
     M(i)=mass(1);
     R0(i)=radius(1);
+    dTmin(i)=min(dT);
     if(~isempty(max(radius(ST==1 | ST==0)))),  RMS(i)=max(radius(ST==1 | ST==0)); end;
     if(~isempty(max(radius(ST==2)))), RHG(i)=max(radius(ST==2)); end;
     if(~isempty(max(radius(ST==3 | ST==4)))), RHeB(i)=max(radius(ST==3 | ST==4)); end;
@@ -244,7 +246,7 @@ for(i=1:500),
     if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
 end;
     
-figure(110)
+figure(111)
 set(gca,'FontSize',14), 
 semilogy(M,R0, ...
     M,RMS,...
@@ -258,7 +260,7 @@ xlabel('$M / M_\odot$', 'Interpreter','latex'),
 ylabel ('$R / R_\odot$', 'Interpreter','latex'),
 legend('ZAMS','MS','HG','CHeB','AGB','Location','SouthEast');
     
-figure(140)
+figure(141)
 set(gca,'FontSize',14),
 loglog(M,MCO,'*',...
 	Mlow,MCOlow,'*', 'LineWidth',3),
