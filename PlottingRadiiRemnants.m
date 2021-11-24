@@ -199,7 +199,9 @@ for(i=1:N),
     time=h5read(file,'/Time');
     ST=h5read(file,'/Stellar_Type');
     dT=h5read(file,'/dT');
+    Hemass=h5read(file,'/Mass_He_Core');
     M(i)=mass(1);
+    MHe(i)=Hemass(length(mass)-1);
     R0(i)=radius(1);
     dTmin(i)=min(dT);
     if(~isempty(max(radius(ST==1 | ST==0)))),  RMS(i)=max(radius(ST==1 | ST==0)); end;
@@ -213,8 +215,10 @@ Mlow=zeros(N,1); MCOlow=zeros(N,1);
 for(i=1:N),
     file=[prefix,num2str(i+N-1),'.h5'];
     mass=h5read(file,'/Mass');
+    Hemass=h5read(file,'/Mass_He_Core');
     ST=h5read(file,'/Stellar_Type');
     Mlow(i)=mass(1);
+    MHelow(i)=Hemass(length(mass)-1);
     if(ST(length(mass))==13 | ST(length(mass))==14), MCOlow(i)=mass(length(mass)); end;
 end;
 
@@ -269,7 +273,18 @@ set(gca,'FontSize',22), grid on;
 xlabel('$M_\textrm{ZAMS} / M_\odot$', 'Interpreter','latex'), 
 ylabel ('$M_\textrm{CO} / M_\odot$', 'Interpreter','latex'),
 %legend('$Z=Z_\odot$','$Z=0.1\,Z_\odot$','Interpreter','latex','Location','NorthWest');
-legend('Z=0.0142','Z=0.001','Location','NorthWest');
+legend('Z=0.0142','Z=0.0001','Location','NorthWest');
+
+figure(143)
+set(gca,'FontSize',14),
+loglog(M,MHe,'*',...
+	Mlow,MHelow,'*', 'LineWidth',3),
+axis([0.8*min(Mlow(MHelow~=0)) 1.2*max(M) 1.0 1.2*max(MHelow)])
+set(gca,'FontSize',22), grid on;
+xlabel('$M_\textrm{ZAMS} / M_\odot$', 'Interpreter','latex'), 
+ylabel ('$M_\textrm{He core} / M_\odot$', 'Interpreter','latex'),
+%legend('$Z=Z_\odot$','$Z=0.1\,Z_\odot$','Interpreter','latex','Location','NorthWest');
+legend('Z=0.0142','Z=0.0001','Location','NorthWest');
 
 figure(160)
 RLOF=0.49/(0.6+log(2));
